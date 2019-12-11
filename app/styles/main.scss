@@ -1,0 +1,109 @@
+$fontFam_uqReg: UniqloProRegular,
+'Uniqlo Pro Regular',
+'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif;
+
+$fontFam_uqBold: UniqloProBold,
+'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif;
+
+$fontFam_hel: 'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif;
+
+$randomNumber: random(300) - 150 + px;
+
+
+@import 'breakpoints';
+
+:root {
+    --random-top: 0px;
+}
+
+// FULL WIDTH SPECIFICITY
+// 
+.pt_primary #main .primary-content {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: none;
+        max-height: none;
+    }
+
+    .inspiration {
+        float: left;
+        // margin-right: 100px;
+    }
+
+    .paraSlivers {
+        position: relative;
+        float: left;
+        width: 500px;
+        margin-right: 100px;
+        overflow: hidden;
+        background: #dd9e3f;
+
+        img {
+            display: block;
+            width: 500px;
+        }
+
+        .fixedImg {
+            visibility: hidden;
+        }
+
+        .sliver {
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            // border: 1px solid blue;
+
+            img {
+                width: 100%;
+            }
+
+            &.sliver01 {
+                top: var(--random-top);
+                left: 0;
+            }
+
+            &.sliver02 {
+                top: var(--random-top);
+                left: 20%;
+            }
+
+            &.sliver03 {
+                top: var(--random-top);
+                left: 40%;
+            }
+
+            &.sliver04 {
+                top: var(--random-top);
+                left: 60%;
+            }
+
+            &.sliver05 {
+                top: var(--random-top);
+                left: 80%;
+            }
+        }
+    }
+
+    .circlie {
+        background: #f81acc;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
