@@ -16,7 +16,7 @@ Helvetica,
 Arial,
 sans-serif;
 
-$randomNumber: random(300) - 150 + px;
+$randomNumber: random(300) - 150+px;
 
 
 @import 'breakpoints';
@@ -34,26 +34,34 @@ $randomNumber: random(300) - 150 + px;
     }
 
     img {
+        display: block;
         max-width: none;
         max-height: none;
     }
 
     .inspiration {
-        float: left;
-        // margin-right: 100px;
+        width: 500px;
+        margin: 0 auto 50px;
     }
 
     .paraSlivers {
         position: relative;
-        float: left;
         width: 500px;
-        margin-right: 100px;
+        margin: 0 auto 50px;
         overflow: hidden;
         background: #dd9e3f;
 
         &.tenSlivers {
             .sliver {
                 width: 10%;
+            }
+        }
+
+        &.twoRowsTenColumns {
+            .sliver {
+                top: var(--random-top);
+                width: 10%;
+                height: 50%;
             }
         }
 
@@ -71,36 +79,85 @@ $randomNumber: random(300) - 150 + px;
             top: var(--random-top);
             width: 20%;
             height: 100%;
-            // border: 1px solid blue;
 
             img {
                 width: 100%;
             }
 
+
+
+            // ————————————————————————————————————o FIVE COLUMNS -->
+            // FIVE COLUMNS -->
+
             &.sliver01 {
-                top: var(--random-top);
                 left: 0;
             }
 
             &.sliver02 {
-                top: var(--random-top);
                 left: 20%;
             }
 
             &.sliver03 {
-                top: var(--random-top);
                 left: 40%;
             }
 
             &.sliver04 {
-                top: var(--random-top);
                 left: 60%;
             }
 
             &.sliver05 {
-                top: var(--random-top);
                 left: 80%;
             }
+
+
+
+            // ————————————————————————————————————o TEN COLUMNS -->
+            // TEN COLUMNS -->
+
+            &.sliver010 {
+                left: 0%;
+            }
+
+            &.sliver020 {
+                left: 10%;
+            }
+
+            &.sliver030 {
+                left: 20%;
+            }
+
+            &.sliver040 {
+                left: 30%;
+            }
+
+            &.sliver050 {
+                left: 40%;
+            }
+
+            &.sliver060 {
+                left: 50%;
+            }
+
+            &.sliver070 {
+                left: 60%;
+            }
+
+            &.sliver080 {
+                left: 70%;
+            }
+
+            &.sliver090 {
+                left: 80%;
+            }
+
+            &.sliver0100 {
+                left: 90%;
+            }
+
+
+
+            // ————————————————————————————————————o TWO ROWS + TEN COLUMNS -->
+            // TWO ROWS + TEN COLUMNS -->
 
             &.sliver010 {
                 left: 0%;

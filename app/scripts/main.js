@@ -2,6 +2,7 @@ let randomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min) + "px"
 }
 
+
 function rando(min, max) {
     if (max == null) {
         max = min
@@ -16,6 +17,9 @@ function rando(min, max) {
 }
 
 
+// Setup Range for Animation Times/Speeds
+const timeMin = 2
+const timeMax = 4
 
 
 
@@ -39,9 +43,9 @@ function sample(list) {
 
 
 
-// Initialize Timeline
-//
-let timing = new TimelineMax()
+
+
+
 
 // Setting random value to the CSS variable, --random-top. This
 // is the starting point for the slivers which will animate from
@@ -50,17 +54,18 @@ let timing = new TimelineMax()
 // Creates two ranges for those starting positions, which are either
 // heigher than or lower than what's visible on the canvas
 //
-let allSlivers = $(".sliver").toArray()
+let allSlivers = $('.sliver').toArray()
 let randomTrigger
 let randomSliverHigh
 let randomSliverLow
+
 let setResetSlivers = () => {
     for (let j = 0; j <= allSlivers.length; j++) {
         $(allSlivers).each(function() {
             randomTrigger = Math.random()
             // console.log('randomTrigger: ' + randomTrigger)
 
-            if (randomTrigger > 0.5) {
+            if (randomTrigger >= 0.5) {
                 randomSliverHigh = randomInt(-2000, -500)
                 // console.log('randomSliverHigh: ' + randomSliverHigh)
                 $(this).attr("style", "--random-top: " + randomSliverHigh)
@@ -71,28 +76,106 @@ let setResetSlivers = () => {
             }
         });
     }
-    runAni()
+	// runAni()
+	tl.invalidate().restart()
+    console.log('setReset')
 }
 
 
 
 
-
-// Running the timeline
-// This is called again after the sliver positions have been reset
+// Initialize and Build Out Timeline
 //
-let runAni = () => {
-    timing.to(".sliver", rando(2, 4), {
-        top: 0,
+let tl = new TimelineMax({
+        delay: 1,
         repeat: 1,
         repeatDelay: 1,
         yoyo: true,
         ease: Power4.easeOut,
-        onComplete: setResetSlivers
+        onComplete: function() {
+            console.log('tl complete')
+            setResetSlivers()
+        }
     })
-}
+
+
+	// One row and five columns
+    .to('.fiveSlivers .sliver', rando(timeMin, timeMax), {
+        top: 0
+	}, 0)
+
+
+	// One row and ten columns
+	.to('.tenSlivers .sliver', rando(timeMin, timeMax), {
+	    top: 0
+	}, 0)
+
+
+	// Two rows and ten columns
+    .to('.topRow .sliver', rando(timeMin, timeMax), {
+        top: 0
+    }, 0)
+    .to('.bottomRow .sliver', rando(timeMin, timeMax), {
+        top: 250
+    }, 0)
+	.set({}, {}, timeMax) // This line sets the duration of the timeline (not including the delay)
+	
+	// console.log("duration is: " + tl.duration())
+	// console.log("totalDuration is: " + tl.totalDuration())
 
 setResetSlivers()
+
+
+
+
+
+
+
+
+
+// DEPRECATED
+// 
+// Running the timeline
+// This is called again after the sliver positions have been reset
+//
+let runAni = () => {
+
+    let tl = new TimelineMax({
+    	// repeat: -1,
+    	delay: 1,
+        repeat: 1,
+        repeatDelay: 1,
+    	yoyo: true,
+    	ease: Power4.easeOut,
+    	// onComplete: setResetSlivers
+    	onComplete: function() {
+    		console.log('tl complete')
+    		// tl.invalidate().call(setResetSlivers)
+    		// console.log('numRun: ' + numRun)
+    		// numRun++
+    		// setResetSlivers()
+    		this.restart()
+    	}
+    })
+
+
+    .to('.fiveSlivers .sliver', rando(2, 4), {
+            top: 0
+        }, 0)
+        .to('.topRow .sliver', rando(2, 4), {
+            top: 0
+        }, 0)
+        .to('.bottomRow .sliver', rando(2, 4), {
+            top: 250
+        }, 0)
+		.set({}, {}, 4) // This line sets the total duration of the timeline
+		
+
+    // console.log("duration is: " + tl.duration())
+    console.log("totalDuration is: " + tl.totalDuration())
+}
+
+// setResetSlivers()
 
 
 
