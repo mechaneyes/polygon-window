@@ -10,11 +10,11 @@ Rinse. Repeat.
 ## Samples of Output
 
 
-![Polygon Window 00](https://image.uniqlo.com//UQ/ST3/us/imagesother/kawsxpeanuts/poly10x2_00.jpg)
+![Polygon Window 00](app/images/poly10x2_00.jpg)
 
-![Polygon Window 01](https://image.uniqlo.com//UQ/ST3/us/imagesother/kawsxpeanuts/poly10x2_01.jpg)
+![Polygon Window 01](app/images/poly10x2_01.jpg)
 
-![Polygon Window 02](https://image.uniqlo.com//UQ/ST3/us/imagesother/kawsxpeanuts/poly10x2_02.jpg)
+![Polygon Window 02](app/images/poly10x2_02.jpg)
 
 
 
