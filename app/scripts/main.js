@@ -61,11 +61,11 @@ let setResetSlivers = () => {
             // console.log('randomTrigger: ' + randomTrigger)
 
             if (randomTrigger > 0.5) {
-                randomSliverHigh = randomInt(-1500, -750)
+                randomSliverHigh = randomInt(-2000, -500)
                 // console.log('randomSliverHigh: ' + randomSliverHigh)
                 $(this).attr("style", "--random-top: " + randomSliverHigh)
             } else {
-                randomSliverLow = randomInt(750, 1500)
+                randomSliverLow = randomInt(500, 2000)
                 // console.log('randomSliverLow: ' + randomSliverLow)
                 $(this).attr("style", "--random-top: " + randomSliverLow)
             }
