@@ -65,12 +65,12 @@ let setResetSlivers = () => {
             randomTrigger = Math.random()
             // console.log('randomTrigger: ' + randomTrigger)
 
-            if (randomTrigger >= 0.5) {
-                randomSliverHigh = randomInt(-2000, -500)
+            if (randomTrigger >= 0.3) {
+                randomSliverHigh = randomInt(-1500, -500)
                 // console.log('randomSliverHigh: ' + randomSliverHigh)
                 $(this).attr("style", "--random-top: " + randomSliverHigh)
             } else {
-                randomSliverLow = randomInt(500, 2000)
+                randomSliverLow = randomInt(500, 1500)
                 // console.log('randomSliverLow: ' + randomSliverLow)
                 $(this).attr("style", "--random-top: " + randomSliverLow)
             }
@@ -78,7 +78,7 @@ let setResetSlivers = () => {
     }
 	// runAni()
 	tl.invalidate().restart()
-    console.log('setReset')
+    // console.log('setReset')
 }
 
 
@@ -93,7 +93,7 @@ let tl = new TimelineMax({
         yoyo: true,
         ease: Power4.easeOut,
         onComplete: function() {
-            console.log('tl complete')
+            // console.log('tl complete')
             setResetSlivers()
         }
     })
@@ -131,106 +131,3 @@ setResetSlivers()
 
 
 
-
-
-// DEPRECATED
-// 
-// Running the timeline
-// This is called again after the sliver positions have been reset
-//
-let runAni = () => {
-
-    let tl = new TimelineMax({
-    	// repeat: -1,
-    	delay: 1,
-        repeat: 1,
-        repeatDelay: 1,
-    	yoyo: true,
-    	ease: Power4.easeOut,
-    	// onComplete: setResetSlivers
-    	onComplete: function() {
-    		console.log('tl complete')
-    		// tl.invalidate().call(setResetSlivers)
-    		// console.log('numRun: ' + numRun)
-    		// numRun++
-    		// setResetSlivers()
-    		this.restart()
-    	}
-    })
-
-
-    .to('.fiveSlivers .sliver', rando(2, 4), {
-            top: 0
-        }, 0)
-        .to('.topRow .sliver', rando(2, 4), {
-            top: 0
-        }, 0)
-        .to('.bottomRow .sliver', rando(2, 4), {
-            top: 250
-        }, 0)
-		.set({}, {}, 4) // This line sets the total duration of the timeline
-		
-
-    // console.log("duration is: " + tl.duration())
-    console.log("totalDuration is: " + tl.totalDuration())
-}
-
-// setResetSlivers()
-
-
-
-
-
-
-
-
-
-
-
-// // center elements
-// TweenMax.set(".circlie", {
-// 	left: "50%",
-// 	top: "50%",
-// 	xPercent: -50,
-// 	yPercent: -50,
-// 	alpha: 0
-// });
-
-// // random scale, or I can use cycle here
-// // TweenMax.staggerTo(".circlie", 1, {cycle: {scale:[1, .25, .5, .75]}});
-
-// var scales = [0.25, 0.5, 0.75, 1];
-// var colors = ["#f81acc", "#E00E4E", "#5219AA", "#C90D77", "#CF368D"];
-
-// TweenLite.set(".circlie", { scale: sample(scales) });
-
-// var tl = new TimelineMax({ repeat: -1 });
-
-// for (var i = 0; i < 2; i++) {
-// 	tl.staggerTo(".circlie", 1, {
-// 		backgroundColor: sample(colors),
-// 		x: random(-80, 100),
-// 		y: random(-100, 100),
-// 		alpha: random(1),
-// 		repeat: 1,
-// 		repeatDelay: 0.1,
-// 		yoyo: true,
-// 		ease: Expo.easeOut
-// 	});
-// }
-
-// function sample(list) {
-// 	return function() {
-// 		return list[Math.floor(Math.random() * list.length)];
-// 	};
-// }
-
-// function random(min, max) {
-// 	if (max == null) {
-// 		max = min;
-// 		min = 0;
-// 	}
-// 	return function() {
-// 		return Math.random() * (max - min) + min;
-// 	};
-// }
